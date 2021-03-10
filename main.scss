@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: "Allerta Stencil", sans-serif;
+  user-select: none;
+}
+body {
+  width: 100%;
+  height: 100%;
+  background: black
+    url(https://images.unsplash.com/photo-1517592640034-4d5804694660?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9);
+  background-size: cover;
+  background-repeat: no-repeat;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+#canvas {
+  z-index: 900;
+  cursor: crosshair;
+  border: 1px solid rgba(66, 0, 0, 0.561);
+  height: 500px;
+  width: 500px;
+  background: linear-gradient(135deg, #ff00006b 0%, #ff0000da 100%);
+  position: relative;
+  box-shadow: 0 10px 15px black;
+  margin: 0 auto;
+  overflow: hidden;
+  margin-top: 25px;
+}
+
+.virus {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  height: var(--y);
+  width: var(--x);
+  --scaler: 1;
+  animation: virusAnim 14s forwards;
+
+  &:hover {
+    --scaler: 1.03;
+  }
+  &:active {
+    --scaler: 0.97;
+  }
+}
+
+@keyframes virusAnim {
+  from {
+    transform: translate(0%, 0%) scale(var(--scaler));
+  }
+  to {
+    transform: translate(var(--trX), var(--trY)) scale(var(--scaler));
+  }
+}
+
+#endscreen {
+  visibility: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  opacity: 0;
+  z-index: 1000;
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: #000;
+}
+
+#start {
+  padding: 10px 20px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: 900;
+  border-radius: 20px;
+  outline-style: none;
+
+  &:hover {
+    background-color: brown;
+    filter: saturate(0.8);
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.skills,
+.confinement {
+  color: white;
+  font-size: 21px;
+  text-shadow: #000 1px 2px 2px;
+}
+
+#score {
+  color: red;
+  font-size: 32px;
+}
+
+#days {
+  color: red;
+}
+
+#pointer {
+  z-index: 1000;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: orange;
+  border: yellowgreen 1px solid;
+
+  left: var(--posX);
+  top: var(--posY);
+
+  transform: translate(-50%, -50%);
+
+  &:after {
+    content: "+";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -55%);
+  }
+
+  &:active {
+    background-color: rgba(255, 166, 0, 0.37);
+  }
+}
+
+.titre {
+  margin-top: 25px;
+  font-size: 48px;
+  color: rgba(255, 255, 255, 0.541);
+}
