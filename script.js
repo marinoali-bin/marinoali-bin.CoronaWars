@@ -82,7 +82,7 @@ function start(){
 
  function viruspop() {
     let virus = new Image();
-    virus.src = "./pngwave.png"
+    virus.src = "./media/pngwave.png"
     virus.classList.add('virus')
     virus.style.top=Math.random()*500 + 'px'
     virus.style.left=Math.random()*500 + 'px'
